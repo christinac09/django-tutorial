@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'myapp',
     'rest_auth',
 ]
-AUTH_USER_MODEL ='myapp.urls'
+AUTH_USER_MODEL ='myapp.user'
 REST_FRAMEWORK = {
   'DEFAULT_PERMISSION_CLASSES': (
       'rest_framework.permissions.IsAuthenticated',
