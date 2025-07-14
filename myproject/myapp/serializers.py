@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Type, Quiz, Question, Role
+from .models import User, Type, Quiz, Question
 
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -24,9 +24,3 @@ class QuestionSerializer(serializers.ModelSerializer):
 		model = Question
 		fields = ['uuid_id', 'question', 'answer', 'incorrect', 'quiz']
 		read_only_fields = ['uuid_id']
-
-class RoleSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Role
-		fields = ['id', 'get_id_display']
-		read_only_fields = ['id']

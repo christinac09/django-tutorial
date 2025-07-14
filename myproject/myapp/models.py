@@ -3,19 +3,12 @@ from django.contrib.auth.models import AbstractUser
 #from django.contrib.postgres.fields import ArrayField
 import uuid
 
-class Role(models.Model):
+class User(AbstractUser):
     USER = 1
     ADMIN = 2
     ROLE_CHOICES = ((USER, "user"), (ADMIN, 'admin'))
 
-    id = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, primary_key=True)
-
-    def __str__(self):
-        return self.get_id_display()
-
-
-class User(AbstractUser):
-    role = models.ForeignKey(Role, null=False, on_delete=models.CASCADE)
+    role = models.CharField(choices=ROLE_CHOICES, null=False, default=(USER, 'user'))
     email = models.EmailField(null=False, unique=True)
     username = models.CharField(max_length=255, null=False, unique=True)
     #password = models.CharField(max_length=255, null=False)  included in abstractuser(?)
