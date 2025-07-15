@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', '@nuxtjs/tailwindcss'],
   runtimeConfig: {
     // The private keys which are only available server-side
     //apiSecret: '123',
@@ -11,4 +11,5 @@ export default defineNuxtConfig({
       apiBase: process.env.API_BASE_URL
     }
   }
+
 })
