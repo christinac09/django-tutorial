@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-3xl font-bold text-center">header</h1>
+    <NuxtLink to="/SignUp">Go to signup</NuxtLink>
   </div>
 </template>
 

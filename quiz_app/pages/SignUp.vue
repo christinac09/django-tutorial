@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-3xl font-bold text-center">header</h1>
+    <NuxtLink to="/LogIn">Go to login</NuxtLink>
   </div>
 </template>
 
