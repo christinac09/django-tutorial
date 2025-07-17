@@ -5,4 +5,10 @@ interface User {
     role: string
 }
 
-export type {User}
+interface UserForm {
+    username: string
+    email: string
+    password: string
+}
+
+export type {User, UserForm}
