@@ -17,13 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from myapp.views import UserViewSet
+from myapp.views import UserViewSet, QuestionViewSet, QuizViewSet
 
 router = DefaultRouter()
 router.register(r'user', UserViewSet)
+router.register(r'question', QuestionViewSet)
+router.register(r'quiz', QuizViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('user/', UserViewSet.as_view({'get':'list'}), name='user')
+    path('user/', UserViewSet.as_view({'get':'list'}), name='user'),
+    path('question/', QuestionViewSet.as_view({'get':'list'}), name='question'),
+    path('quiz/', QuizViewSet.as_view({'get':'list'}), name='quiz')
 ]
