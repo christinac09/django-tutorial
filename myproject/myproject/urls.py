@@ -27,10 +27,10 @@ router.register(r'quiz', QuizViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
     path('user/', UserViewSet.as_view({'get':'list'}), name='user'),
     path('question/', QuestionViewSet.as_view({'get':'list'}), name='question'),
     path('quiz/', QuizViewSet.as_view({'get':'list'}), name='quiz'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('', include(router.urls)),    # order matters, checks urls in order, makes sure request is processed so it doesn't just redirect to user first
 ]

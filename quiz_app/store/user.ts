@@ -1,6 +1,6 @@
 import { ref, reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
-import type {User} from '../types/types.ts'
+import type {User} from '../types/types.js'
 
 export const useStore = defineStore('user', () => {
     const user = ref<User | null>(null)
