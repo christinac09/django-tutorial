@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import type { UserForm } from "~/types/types";
+import type { UserForm } from "~/utils/types";
 const signupForm = reactive<UserForm>({
   email: "",
   password: "",

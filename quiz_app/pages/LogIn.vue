@@ -23,14 +23,16 @@
 </template>
 
 <script setup lang="ts">
-import type { UserForm } from "~/types/types";
 const loginForm = reactive<UserForm>({
   email: "admin@admin.com",
   password: "admin",
   username: "",
 });
+
 const errorMessage = ref<string>("");
+
 const config = useRuntimeConfig();
+
 async function handleLogin() {
   const token = await $fetch(config.public.apiBase + "/api/token/", {
     method: "POST",
