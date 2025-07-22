@@ -5,7 +5,7 @@
       <ul class="space-y-3">
         <li v-for="(answer, index) in question.answer">
           <label for="">Blank {{ index + 1 }}: </label>
-          <select name="" id="">
+          <select name="" id="" v-model="selectedAnswers[index]">
             <option value="" disabled>Please select an answer</option>
             <option
               v-for="choice in shuffle([
@@ -37,13 +37,20 @@
   quiz: 1,
 };
  */
+
 const props = defineProps<{
   question: Question;
 }>();
 
+const selectedAnswers = ref<string>([]);
+const { question } = toRefs(props);
 const emit = defineEmits<{
   (e: "answerSelected", choice: string[]): void;
 }>();
+
+onMounted(() => {
+  selectedAnswers.value = question.value.answer.map(() => "");
+});
 
 function selectAnswer(choice: string[]) {
   emit("answerSelected", choice);

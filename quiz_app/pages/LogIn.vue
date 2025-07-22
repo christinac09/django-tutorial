@@ -32,14 +32,11 @@ const loginForm = reactive<UserForm>({
 const errorMessage = ref("");
 
 async function handleLogin() {
-  const token = await $fetch(config.public.apiBase + "/api/token/", {
-    method: "POST",
-    body: {
-      email: loginForm.email,
-      password: loginForm.password,
-    },
+  await fetchEndpoint("/api/token/", "POST", {
+    email: loginForm.email,
+    password: loginForm.password,
   });
-  console.log(token);
+  //call from pinia
 }
 
 onMounted(async () => {

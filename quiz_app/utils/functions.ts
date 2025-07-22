@@ -5,5 +5,19 @@ export function shuffle<T>(array: T[]): T[] {
   }
   return array
 }
+/** Makes a request to an endpoint \
+ * @param endpoint - 
+ * @param method - 
+ * @param body - 
+ */
+export async function requestEndpoint(endpoint: string, method?: string, body?: object): Promise<void>;
 
-export const config = useRuntimeConfig();
+export async function fetchEndpoint(url: string, method?: string, body?: object){
+  const config = useRuntimeConfig();
+  const token = await $fetch(config.public.apiBase + url, {
+    method: method,
+    body: body,
+  });
+  return token
+}
+  
