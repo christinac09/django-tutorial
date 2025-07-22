@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-around min-h-[50vh] p-5">
-    <form @submit.prevent="handleSignup()" class="flex flex-col space-y-4">
+    <form @submit.prevent="handleSignup" class="flex flex-col space-y-4">
       <input
         class="input mb-4 w-full"
         v-model="signupForm.email"
@@ -35,7 +35,7 @@ const signupForm = reactive<UserForm>({
   password: "",
   username: "",
 });
-const errorMessage = ref<string>("");
+const errorMessage = ref("");
 async function handleSignup() {
   const res = await $fetch("/api/submit", {
     method: "POST",

@@ -5,3 +5,5 @@ export function shuffle<T>(array: T[]): T[] {
   }
   return array
 }
+
+export const config = useRuntimeConfig();
