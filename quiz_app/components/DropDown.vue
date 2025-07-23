@@ -12,7 +12,6 @@
               :value="choice"
               :key="index"
             >
-              <!-- can't put shuffle here bc it'll run everythime component rerenders, which is when user interacts w/ dropdown since it messes up the order -->
               {{ choice }}
             </option>
           </select>
@@ -42,13 +41,12 @@
 const props = defineProps<{
   question: Question;
 }>();
-const choices = computed(() => {
-  return props.question.answer.map((correct, index) =>
+const choices = ref<string[][]>([]);
+const selectedAnswers = ref<string[]>(["", ""]);
+onMounted(() => {
+  choices.value = props.question.answer.map((correct, index) =>
     shuffle([correct, ...props.question.incorrect[index]])
   );
-}); //choices is a list of the list of shuffled choices for each dropdown - like question.incorrect, but w correct answers
-const selectedAnswers = ref<string[]>([]);
-onMounted(() => {
   selectedAnswers.value = props.question.answer.map(() => "");
 });
 

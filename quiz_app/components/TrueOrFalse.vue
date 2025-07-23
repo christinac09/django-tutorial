@@ -4,13 +4,13 @@
     <div class="space-y-3">
       <button
         class="px-4 py-2 hover:bg-blue-100 rounded cursor-pointer transition"
-        @click="selectAnswer("True")"
+        @click="selectAnswer('True')"
       >
         True
       </button>
       <button
         class="px-4 py-2 hover:bg-blue-100 rounded cursor-pointer transition"
-        @click="selectAnswer("False")"
+        @click="selectAnswer('False')"
       >
         False
       </button>
