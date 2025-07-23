@@ -18,7 +18,9 @@
           </select>
         </li>
       </ul>
-      <!-- <button type="submit" @click="selectAnswer()">Submit</button> -->
+      <button type="submit" @click="selectAnswer(selectedAnswers)">
+        Submit
+      </button>
     </div>
     <p>selected: {{ selectedAnswers }}</p>
   </div>
@@ -30,8 +32,8 @@
   question: "djfajfjl [BLANK-1] jdslajfasldjfslkd [BLANK-2] jdfsalfjslfjd",
   answer: ["a1", "a2"],
   incorrect: [
-    ["i1", "i1"],
-    ["i2", "i2"],
+    ["i1", "i11"],
+    ["i2", "i22"],
   ],
   quiz: 1,
 };
@@ -49,15 +51,14 @@ const selectedAnswers = ref<string[]>([]);
 onMounted(() => {
   selectedAnswers.value = props.question.answer.map(() => "");
 });
-/* const emit = defineEmits<{
+
+const emit = defineEmits<{
   (e: "answerSelected", choice: string[]): void;
 }>();
 
-
-
 function selectAnswer(choice: string[]) {
   emit("answerSelected", choice);
-} */
+}
 </script>
 
 <style scoped></style>
