@@ -23,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import { requestEndpoint } from "~/utils/functions";
+
 const loginForm = reactive<UserForm>({
   email: "admin@admin.com",
   password: "admin",
@@ -32,11 +34,12 @@ const loginForm = reactive<UserForm>({
 const errorMessage = ref("");
 
 async function handleLogin() {
-  await fetchEndpoint("/api/token/", "POST", {
-    email: loginForm.email,
-    password: loginForm.password,
+  const token = await requestEndpoint("/api/token/", "POST", {
+    email: "admin@admin.com",
+    password: "admin",
   });
-  //call from pinia
+  console.log(token);
+  // call function from pinia
 }
 
 onMounted(async () => {
