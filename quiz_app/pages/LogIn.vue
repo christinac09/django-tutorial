@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col justify-around min-h-[50vh] p-5">
-    <form @submit.prevent="handleLogin()" class="flex flex-col space-y-4">
+    <form @submit.prevent="handleLogin" class="flex flex-col space-y-4">
       <input
         class="input mb-4 w-full"
         v-model="loginForm.email"
@@ -23,25 +23,23 @@
 </template>
 
 <script setup lang="ts">
+import { requestEndpoint } from "~/utils/functions";
+
 const loginForm = reactive<UserForm>({
   email: "admin@admin.com",
   password: "admin",
   username: "",
 });
 
-const errorMessage = ref<string>("");
-
-const config = useRuntimeConfig();
+const errorMessage = ref("");
 
 async function handleLogin() {
-  const token = await $fetch(config.public.apiBase + "/api/token/", {
-    method: "POST",
-    body: {
-      email: loginForm.email,
-      password: loginForm.password,
-    },
+  const token = await requestEndpoint("/api/token/", "POST", {
+    email: "admin@admin.com",
+    password: "admin",
   });
   console.log(token);
+  // call function from pinia
 }
 
 onMounted(async () => {
