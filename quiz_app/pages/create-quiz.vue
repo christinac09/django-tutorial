@@ -1,7 +1,11 @@
 <template>
   <div>
     <input type="text" placeholder="title" v-model="title" />
-    <CreateQuestion v-for="question in questions" :type="question.type" />
+    <CreateQuestion
+      v-for="(question, index) in questions"
+      :type="question.type"
+      :count="index + 1"
+    />
     <select name="" id="" v-model="currentType">
       <option value="mc">Multiple Choice</option>
       <option value="tf">True or False</option>

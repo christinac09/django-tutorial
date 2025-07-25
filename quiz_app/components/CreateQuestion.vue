@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="card bg-slate-400">
     <!-- use v-if and props -->
+    <h2>{{ count }}</h2>
     <div v-if="type === 'mc'">
       <form action="">
         <input type="text" placeholder="Question" />
@@ -33,7 +34,7 @@
         <input v-if="word.length === 0" type="text">
       </div>
     </div> -->
-    <button @click="create">Create</button>
+    <button class="" @click="removeCard">Remove</button>
   </div>
 </template>
 
@@ -41,9 +42,10 @@
 //prop for type of question
 const props = defineProps<{
   type: string;
+  count: number;
 }>();
 /* function addDropdown() {} */
-function create() {}
+function removeCard() {}
 </script>
 
 <style scoped></style>
