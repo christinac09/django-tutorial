@@ -1,6 +1,5 @@
 <template>
   <div class="card bg-slate-400">
-    <!-- use v-if and props -->
     <h2>{{ count }}</h2>
     <div v-if="type === 'mc'">
       <input type="text" placeholder="Question" v-model="modelValue.question" />
@@ -60,12 +59,10 @@
 </template>
 
 <script setup lang="ts">
-//prop for type of question
 const props = defineProps<{
   type: string;
   count: number;
 }>();
-/* function addDropdown() {} */
 
 const modelValue = defineModel<Question>({ required: true });
 
