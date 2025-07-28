@@ -3,28 +3,49 @@
     <!-- use v-if and props -->
     <h2>{{ count }}</h2>
     <div v-if="type === 'mc'">
-      <form action="">
-        <input type="text" placeholder="Question" />
-        <input type="text" placeholder="Correct Answer" />
-        <!-- make correct ans more visible ig -->
-        <input v-for="n in 3" type="text" placeholder="Wrong Answer" :key="n" />
-      </form>
+      <input type="text" placeholder="Question" v-model="modelValue.question" />
+      <input
+        type="text"
+        placeholder="Correct Answer"
+        v-model="modelValue.answer"
+      />
+      <!-- make correct ans more visible ig -->
+      <input
+        v-for="(value, index) in modelValue.incorrect"
+        type="text"
+        placeholder="Wrong Answer"
+        :key="index"
+        v-model="modelValue.incorrect[index]"
+      />
     </div>
+
     <div v-if="type === 'tf'">
-      <form>
-        <input type="text" placeholder="Question" />
-        <input type="radio" id="True" name="tf" value="True" />
-        <label for="True">True</label><br />
-        <input type="radio" id="False" name="tf" value="False" />
-        <label for="False">False</label><br /><br />
-        <input type="submit" value="Submit" />
-      </form>
+      <input type="text" placeholder="Question" v-model="modelValue.question" />
+      <input
+        type="radio"
+        id="True"
+        name="tf"
+        value="True"
+        v-model="modelValue.answer"
+      />
+      <label for="True">True</label><br />
+      <input
+        type="radio"
+        id="False"
+        name="tf"
+        value="False"
+        v-model="modelValue.answer"
+      />
+      <label for="False">False</label><br /><br />
     </div>
+
     <div v-if="type === 'n'">
-      <form action="">
-        <input type="text" placeholder="Question" />
-        <input type="number" placeholder="Correct Answer" />
-      </form>
+      <input type="text" placeholder="Question" v-model="modelValue.question" />
+      <input
+        type="number"
+        placeholder="Correct Answer"
+        v-model="modelValue.answer"
+      />
     </div>
     <!-- <div v-if="type === 'dd'">        DO LATER
       <form action=""></form>
@@ -34,7 +55,7 @@
         <input v-if="word.length === 0" type="text">
       </div>
     </div> -->
-    <button class="" @click="removeCard">Remove</button>
+    <button class="" @click="removeQuestion">Remove</button>
   </div>
 </template>
 
@@ -45,7 +66,16 @@ const props = defineProps<{
   count: number;
 }>();
 /* function addDropdown() {} */
-function removeCard() {}
+
+const modelValue = defineModel<Question>({ required: true });
+
+const emit = defineEmits<{
+  (e: "remove"): void;
+}>();
+
+function removeQuestion() {
+  emit("remove");
+}
 </script>
 
 <style scoped></style>

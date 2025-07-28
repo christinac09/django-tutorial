@@ -13,7 +13,7 @@ export interface UserForm {
 
 export interface Question {
     question: string
-    answer: string[]
+    answer: string|string[]
     incorrect: string[] | string[][]
     quiz: number
 }
